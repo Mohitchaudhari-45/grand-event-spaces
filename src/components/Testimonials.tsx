@@ -1,42 +1,43 @@
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, Heart } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const testimonials = [
   {
     name: "Sarah & Michael",
     event: "Wedding Reception",
-    text: "Royal Palace made our wedding day absolutely magical. The attention to detail, the stunning venue, and the impeccable service exceeded all our expectations. We couldn't have asked for a more perfect day!",
+    text: "Royal Palace made our wedding day absolutely magical. The attention to detail, the stunning venue, and the impeccable service exceeded all our expectations.",
     rating: 5,
   },
   {
-    name: "Priya Sharma",
+    name: "Priya & Rahul",
     event: "Engagement Ceremony",
-    text: "From the beautiful décor to the delicious food, everything was flawless. The team went above and beyond to ensure our engagement ceremony was memorable. Highly recommended!",
+    text: "From the beautiful décor to the delicious food, everything was flawless. The team went above and beyond to ensure our engagement ceremony was memorable.",
     rating: 5,
   },
   {
-    name: "James Wilson",
-    event: "Corporate Gala",
-    text: "We hosted our annual corporate gala here and the experience was exceptional. Professional staff, elegant ambiance, and seamless coordination. Our guests were thoroughly impressed.",
+    name: "The Wilson Family",
+    event: "Golden Anniversary",
+    text: "We hosted our parents' 50th anniversary here and the experience was exceptional. Professional staff, elegant ambiance, and seamless coordination.",
     rating: 5,
   },
 ];
 
 const Testimonials = () => {
   return (
-    <section className="section-padding bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="section-padding bg-gradient-to-b from-charcoal to-primary text-ivory relative overflow-hidden">
       {/* Decorative Elements */}
-      <div className="absolute top-10 left-10 w-32 h-32 border border-accent/20 rounded-full" />
-      <div className="absolute bottom-10 right-10 w-48 h-48 border border-accent/20 rounded-full" />
+      <div className="absolute top-20 left-10 w-40 h-40 border border-accent/20 rounded-full animate-pulse-slow" />
+      <div className="absolute bottom-20 right-10 w-64 h-64 border border-accent/10 rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-accent/5 rounded-full" />
 
       <div className="container-custom relative z-10">
         <SectionHeading
           subtitle="Testimonials"
-          title="What Our Clients Say"
+          title="Love Stories from Happy Couples"
           light
         >
-          <p className="text-primary-foreground/80">
-            Don't just take our word for it. Here's what our valued guests have to say about their experience with us.
+          <p className="text-ivory/80">
+            Real experiences from families who trusted us with their most precious celebrations.
           </p>
         </SectionHeading>
 
@@ -44,20 +45,25 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-primary-foreground/5 backdrop-blur-sm rounded-lg p-6 md:p-8 border border-primary-foreground/10 hover:border-accent/30 transition-colors"
+              className="glass-card rounded-2xl p-8 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 group"
             >
-              <Quote className="w-10 h-10 text-accent/50 mb-4" />
-              <p className="text-primary-foreground/90 leading-relaxed mb-6">
+              <Quote className="w-12 h-12 text-accent/40 mb-6 group-hover:text-accent transition-colors" />
+              <p className="text-ivory/90 leading-relaxed mb-6 text-lg font-light italic">
                 "{testimonial.text}"
               </p>
               <div className="flex items-center gap-1 mb-4">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-accent text-accent" />
+                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
                 ))}
               </div>
-              <div>
-                <p className="font-display font-semibold text-lg">{testimonial.name}</p>
-                <p className="text-accent text-sm">{testimonial.event}</p>
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center">
+                  <Heart className="w-5 h-5 text-accent" />
+                </div>
+                <div>
+                  <p className="font-display font-semibold text-lg">{testimonial.name}</p>
+                  <p className="text-accent text-sm">{testimonial.event}</p>
+                </div>
               </div>
             </div>
           ))}
